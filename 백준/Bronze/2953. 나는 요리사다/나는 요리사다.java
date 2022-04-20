@@ -1,30 +1,23 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        int[][] arr = new int[5][4];
-        int[] sum = new int[5];
-        int max = sum[0];
-        int maxIndex = 0;
-
+        Scanner sc = new Scanner(System.in);
+        int max = 0;
+        int index = 0;
         for(int i=0;i<5;i++){
+            int sum = 0;
             for(int j=0;j<4;j++){
-                arr[i][j]= scan.nextInt();
-                sum[i] += arr[i][j];
-            }
-            if(sum[i]>max) {
-                max = sum[i];
-                maxIndex = i;
+                int score = sc.nextInt();
+                sum += score;
+                if(max <= sum) {
+                    max = sum;
+                    index = i+1;
+                }
             }
         }
-
-        System.out.print((maxIndex+1) +" ");
-        System.out.print(Arrays.stream(sum).max().getAsInt());
-
-
-
+        System.out.println(index + " " + max);
+        sc.close();
     }
 }
